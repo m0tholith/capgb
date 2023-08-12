@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Gameboy\Renderer\Renderer.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameboy\Renderer\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameboy\CPU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameboy\Bus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Gameboy\CPU.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameboy\Bus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gameboy\HELPER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Roms\11-op a,%28hl%29.gb" />
+    <None Include="Roms\01-special.gb" />
+    <None Include="Roms\02-interrupts.gb" />
+    <None Include="Roms\03-op sp,hl.gb" />
+    <None Include="Roms\04-op r,imm.gb" />
+    <None Include="Roms\05-op rp.gb" />
+    <None Include="Roms\06-ld r,r.gb" />
+    <None Include="Roms\07-jr,jp,call,ret,rst.gb" />
+    <None Include="Roms\08-misc instrs.gb" />
+    <None Include="Roms\09-op r,r.gb" />
+    <None Include="Roms\10-bit ops.gb" />
+    <None Include="SM83_decoding.pdf" />
+    <None Include="Roms\reg_f.gb" />
+    <None Include="Roms\add_sp_e_timing.gb" />
+    <None Include="Roms\boot.gb" />
+    <None Include="Roms\instr_timing.gb" />
+  </ItemGroup>
+</Project>
