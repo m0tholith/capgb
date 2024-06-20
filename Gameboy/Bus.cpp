@@ -16,5 +16,6 @@ void Bus::cpuWrite(uint16_t address, uint8_t data)
 
 void Bus::reset()
 {
-    memory.fill(0);
+    for (int i = 0; i < memory.size(); i++)
+        memory[i] = 0;
 }

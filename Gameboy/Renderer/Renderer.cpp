@@ -10,11 +10,6 @@ int32_t CheckErrorSDL(int32_t result, std::string errorMessage)
     return result;
 }
 
-inline uint32_t ARGB(uint32_t red, uint32_t green, uint32_t blue, uint32_t alpha)
-{
-    return (alpha << 24) | (red << 16) | (green << 8) | blue;
-}
-
 //Marsaglia's xorshf generator (Fast Random Function)
 static uint32_t s_randX = 123456789;
 static uint32_t s_randY = 362436069;
@@ -57,7 +52,14 @@ int32_t Renderer::Render()
     {
         pitch /= sizeof(uint32_t);
         for (int i = 0; i < g_kRenderWidth * g_kRenderHeight; i++)
-            pPixelBuffer[i] = pixels[i];
+        {
+            //if (pixelsLayer2[i * 4])
+            pPixelBuffer[i] = pixels[0][i];
+            if ((pixels[1][i] & 0xFF) != 0) // if alpha is not 0
+                pPixelBuffer[i] = pixels[1][i];
+            if ((pixels[2][i] & 0xFF) != 0)
+                pPixelBuffer[i] = pixels[2][i];
+        }
         SDL_UnlockTexture(pTexture);
 
         SDL_RenderCopy(pRenderer, pTexture, NULL, NULL);
@@ -80,9 +82,14 @@ int Renderer::Start()
     return 0;
 }
 
-void Renderer::ChangeColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+void Renderer::ChangeColor(uint8_t x, uint8_t y, uint32_t r, uint32_t g, uint32_t b, uint32_t a, int layer)
 {
-    pixels[x + y * g_kRenderWidth] = ARGB(r, g, b, a);
+    pixels[layer][x + y * g_kRenderWidth] = ARGB(r, g, b, a);
+}
+
+void Renderer::ChangeColor(uint8_t x, uint8_t y, uint32_t color, int layer)
+{
+    pixels[layer][x + y * g_kRenderWidth] = color;
 }
 
 bool Renderer::ProcessInput()
@@ -191,7 +198,7 @@ void Renderer::Shutdown(SDL_Window** ppWindow, SDL_Renderer** ppRenderer, SDL_Te
 
 SDL_Texture* Renderer::CreateBackBufferTexture(SDL_Renderer* pRenderer)
 {
-    SDL_Texture* pTexture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_ARGB8888,
+    SDL_Texture* pTexture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888,
         SDL_TEXTUREACCESS_STREAMING, g_kRenderWidth, g_kRenderHeight);
 
     CheckErrorSDL(!pTexture, "Failed to create Back Buffer Texture\n");

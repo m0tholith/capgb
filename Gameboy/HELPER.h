@@ -101,6 +101,11 @@ namespace HELPER
 	{
 		return (((uint16_t)hi) << 8) | lo;
 	}
+
+	static uint32_t lerp(uint32_t a, uint32_t b, float t)
+	{
+		return a + (b - a) * t;
+	}
 };
 
 #endif // !HELPER_H

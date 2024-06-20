@@ -12,7 +12,7 @@ private:
     constexpr static const int32_t g_kRenderDeviceFlags = -1;
     constexpr static const int32_t g_kErrorOccurred = -1;
 
-    constexpr static const char* g_kWindowTitle = "GB.cap";
+    constexpr static const char* g_kWindowTitle = "cap.gb";
 
     uint64_t totalFramesRendered = 0;
     uint64_t lastTick = 0;
@@ -31,10 +31,10 @@ private:
     // Call this once during each render loop in order to determine when the user wishes to terminate the program
     bool ProcessInput();
 public:
-    constexpr static const int32_t g_kRenderWidth = 256;
-    constexpr static const int32_t g_kRenderHeight = 240;
-    constexpr static const int32_t g_kWindowWidth = g_kRenderWidth * 4;
-    constexpr static const int32_t g_kWindowHeight = g_kRenderHeight * 4;
+    constexpr static const int32_t g_kRenderWidth = 160;
+    constexpr static const int32_t g_kRenderHeight = 144;
+    constexpr static const int32_t g_kWindowWidth = g_kRenderWidth * 6;
+    constexpr static const int32_t g_kWindowHeight = g_kRenderHeight * 6;
 
     SDL_Window* pWindow = nullptr;
     SDL_Renderer* pRenderer = nullptr;
@@ -44,13 +44,18 @@ public:
 
     uint64_t totalTicks = 0;
 
-    std::array<uint32_t, g_kRenderWidth * g_kRenderHeight> pixels;
+    uint32_t pixels[3][g_kRenderWidth * g_kRenderHeight]; 
 
+    static uint32_t ARGB(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
+    {
+        return (r << 24) | (g << 16) | (b << 8) | a;
+    }
     // Call this within every render loop
     // Fills screen with randomly generated colored pixels
     int32_t Render();
     int Start();
-    void ChangeColor(uint8_t x, uint8_t y, uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+    void ChangeColor(uint8_t x, uint8_t y, uint32_t r, uint32_t g, uint32_t b, uint32_t a, int layer = 0);
+    void ChangeColor(uint8_t x, uint8_t y, uint32_t color, int layer = 0);
     // Free resources
     void Shutdown(SDL_Window** ppWindow, SDL_Renderer** ppRenderer, SDL_Texture** ppTexture);
 };

@@ -26,6 +26,9 @@
     <ClCompile Include="Gameboy\Bus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PPU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gameboy\CPU.h">
@@ -35,6 +38,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Gameboy\HELPER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PPU.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,5 +61,6 @@
     <None Include="Roms\add_sp_e_timing.gb" />
     <None Include="Roms\boot.gb" />
     <None Include="Roms\instr_timing.gb" />
+    <None Include="Roms\Super Mario Land (JUE) (V1.1) [!].gb" />
   </ItemGroup>
 </Project>

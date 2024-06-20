@@ -175,11 +175,13 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Gameboy\Renderer\Renderer.cpp" />
     <ClCompile Include="Gameboy\Renderer\Renderer.h" />
+    <ClCompile Include="PPU.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gameboy\Bus.h" />
     <ClInclude Include="Gameboy\CPU.h" />
     <ClInclude Include="Gameboy\HELPER.h" />
+    <ClInclude Include="PPU.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Roms\01-special.gb" />
@@ -197,6 +199,7 @@
     <None Include="Roms\boot.gb" />
     <None Include="Roms\instr_timing.gb" />
     <None Include="Roms\reg_f.gb" />
+    <None Include="Roms\Super Mario Land (JUE) (V1.1) [!].gb" />
     <None Include="SM83_decoding.pdf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
